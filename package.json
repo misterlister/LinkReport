@@ -2,9 +2,14 @@
   "name": "linkreport",
   "version": "1.0.0",
   "description": "A program that generates a report of internal links within all pages of a website",
+  "type": "module",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "jest": {
+    "transform": {}
   },
   "repository": {
     "type": "git",
@@ -20,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/misterlister/LinkReport/issues"
   },
-  "homepage": "https://github.com/misterlister/LinkReport#readme"
+  "homepage": "https://github.com/misterlister/LinkReport#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "jsdom": "^24.0.0"
+  }
 }
