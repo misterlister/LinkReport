@@ -1,3 +1,4 @@
+import { JSDOM } from "jsdom"
 
 function normalizeURL(url) {
     const urlObj = new URL(url)
@@ -8,4 +9,22 @@ function normalizeURL(url) {
     return urlPath
 }
 
-export { normalizeURL }
+function getURLsFromHTML(htmlString, baseURL) {
+    const linkUrls = []
+    const htmlObj = new JSDOM(htmlString)
+    htmlObj.window.document.querySelectorAll("a").forEach(link => {
+        let newUrl = link.href
+        try {
+            if (newUrl[0] === "/") {
+                newUrl = baseURL + newUrl
+            }
+            linkUrls.push(newUrl)
+        } catch(err) {
+            console.log(`${err.message}: ${newUrl}`)
+        }
+        
+    })
+    return linkUrls
+}
+
+export { normalizeURL, getURLsFromHTML }
