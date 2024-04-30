@@ -58,7 +58,7 @@ test("getURLsFromHTML absolute path test", () => {
     const input = "<html><body><div><a href='https://blog.example.com'>Absolute link</a> </div></html></body>"
     const baseUrl = "https://example.com"
     const output = getURLsFromHTML(input, baseUrl)
-    const expected = ['https://blog.example.com/']
+    const expected = ["https://blog.example.com/"]
     console.log(output)
     console.log(expected)
     expect(output).toEqual(expected)
@@ -68,7 +68,7 @@ test("getURLsFromHTML relative path test", () => {
     const input = "<html><body><div><a href='/newpath'>Relative link</a></div></html></body>"
     const baseUrl = "https://example.com"
     const output = getURLsFromHTML(input, baseUrl)
-    const expected = ['https://example.com/newpath']
+    const expected = ["https://example.com/newpath"]
     console.log(output)
     console.log(expected)
     expect(output).toEqual(expected)
@@ -78,7 +78,17 @@ test("getURLsFromHTML absolute and relative path test", () => {
     const input = "<html><body><div><a href='/newpath/anotherpath'>Relative Link</a><a href='https://other.com/path'>Absolute Link</a></div></html></body>"
     const baseUrl = "https://example.com"
     const output = getURLsFromHTML(input, baseUrl)
-    const expected = ['https://example.com/newpath/anotherpath', 'https://other.com/path']
+    const expected = ["https://example.com/newpath/anotherpath", "https://other.com/path"]
+    console.log(output)
+    console.log(expected)
+    expect(output).toEqual(expected)
+})
+
+test("getURLsFromHTML empty URL test", () => {
+    const input = "<html><body><div><a href=''>Empty Link</a></div></html></body>"
+    const baseUrl = "https://example.com"
+    const output = getURLsFromHTML(input, baseUrl)
+    const expected = ["https://example.com/"]
     console.log(output)
     console.log(expected)
     expect(output).toEqual(expected)
