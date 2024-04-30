@@ -59,8 +59,6 @@ test("getURLsFromHTML absolute path test", () => {
     const baseUrl = "https://example.com"
     const output = getURLsFromHTML(input, baseUrl)
     const expected = ["https://blog.example.com/"]
-    console.log(output)
-    console.log(expected)
     expect(output).toEqual(expected)
 })
 
@@ -69,8 +67,6 @@ test("getURLsFromHTML relative path test", () => {
     const baseUrl = "https://example.com"
     const output = getURLsFromHTML(input, baseUrl)
     const expected = ["https://example.com/newpath"]
-    console.log(output)
-    console.log(expected)
     expect(output).toEqual(expected)
 })
 
@@ -79,8 +75,6 @@ test("getURLsFromHTML absolute and relative path test", () => {
     const baseUrl = "https://example.com"
     const output = getURLsFromHTML(input, baseUrl)
     const expected = ["https://example.com/newpath/anotherpath", "https://other.com/path"]
-    console.log(output)
-    console.log(expected)
     expect(output).toEqual(expected)
 })
 
@@ -89,7 +83,5 @@ test("getURLsFromHTML empty URL test", () => {
     const baseUrl = "https://example.com"
     const output = getURLsFromHTML(input, baseUrl)
     const expected = ["https://example.com/"]
-    console.log(output)
-    console.log(expected)
     expect(output).toEqual(expected)
 })
